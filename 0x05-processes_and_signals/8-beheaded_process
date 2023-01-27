@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script prints To infinity and beyond indefinitely.
+pgrep -f 7-highlander | xargs kill -s KILL
