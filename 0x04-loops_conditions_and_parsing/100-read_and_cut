@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Script that prints some information about /rc/passwd.
+FILE=/etc/passwd
+while read -r p
+do
+	cut -d: -f1 <<<"$p" | tr -d $'\n'
+	echo -n :
+	cut -d: -f3 <<<"$p" | tr -d $'\n'
+	echo -n :
+	cut -d: -f6 <<<"$p" | tr -d $'\n'
+	echo
+done <$FILE

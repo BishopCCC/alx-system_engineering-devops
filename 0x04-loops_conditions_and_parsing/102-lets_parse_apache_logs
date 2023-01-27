@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# AWK: Display IP and HTTP code of apache log
+logfile="apache-access.log"
+awk '{print $1, $9}' < $logfile

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# The user USERNAME is part of the GROUP_ID gang,
+# lives in HOME_DIRECTORY and rides COMMAND/SHELL.
+# USER ID's place is protected by the passcode PASSWORD,
+# more info about the user here: USER ID INFO
+FILE=/etc/passwd
+while read -r p
+do
+	echo -n "The user "
+	cut -d: -f1 <<<"$p" | tr -d $'\n'
+	echo -n " is part of the "
+	cut -d: -f4 <<<"$p" | tr -d $'\n'
+	echo -n " gang, lives in "
+	cut -d: -f6 <<<"$p" | tr -d $'\n'
+	echo -n " and rides "
+	cut -d: -f7 <<<"$p" | tr -d $'\n'
+	echo -n ". "
+	cut -d: -f3 <<<"$p" | tr -d $'\n'
+	echo -n "'s place is protected by the passcode "
+	cut -d: -f2 <<<"$p" | tr -d $'\n'
+	echo -n ", more info about the user here: "
+	cut -d: -f5 <<<"$p" | tr -d $'\n'
+	echo
+done <$FILE
